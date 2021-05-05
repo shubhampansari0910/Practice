@@ -3,8 +3,8 @@ const { date } = require("joi");
 var router = express.Router();
 
 router.post('/',(req,res)=>{
-    var {error} = new Joi.ValidationError(req.body,functions.schema);
-    console.log("validation errror",error);
+    var {error} = Joi.object(functions.schema).validate(req.body);
+    //new Joi.ValidationError(req.body,functions.schema);
     if(!error){
         functions.createCode(req.body).then((result)=>{
             console.log("resultttt",result);
@@ -16,7 +16,7 @@ router.post('/',(req,res)=>{
         })
     }
     else {
-        res.status(400).send(err);
+        res.status(400).send(error.message);
     }
     
 })

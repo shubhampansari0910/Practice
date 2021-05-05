@@ -36,9 +36,9 @@ module.exports={
      },
 
      schema : {
-            amount:Joi.number().required(),
-            ExpiryDate:Joi.number().required(),
-            minValue:Joi.number().required(),
+            amt:Joi.number().required(),
+            exp_Days:Joi.number().required(),
+            min:Joi.number().required(),
             isActive:Joi.boolean().required()
     },
 
